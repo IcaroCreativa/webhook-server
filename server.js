@@ -39,7 +39,7 @@ app.use((err, req, res, next) => {
 
 // Route GET pour la racine
 app.get("/", (req, res) => {
-  res.send("Welcome to the Webhook Server!");
+  res.send("Welcome to the Socket server Server!");
 });
 
 // Route POST pour le point d'API socket
@@ -70,9 +70,6 @@ io.on("connection", (socket) => {
 server.listen(port, () => {
   console.log(`Server running at https://localhost:${port}/`);
 });
-
-
-
 
 // const express = require("express");
 // const cors = require("cors");
