@@ -6,12 +6,12 @@ const socketIO = require("socket.io");
 require("dotenv").config();
 
 // Déclaration des constantes
-const allowedOrigin = process.env.MAIN_URL;
+const allowedOrigin = process.env.CLIENT_URL;
 const port = process.env.PORT || 3000;
-
+console.log(allowedOrigin);
 // Configuration CORS
 const corsOptions = {
-  origin: "https://socket-client-production.up.railway.app",
+  origin: allowedOrigin,
   optionsSuccessStatus: 200,
 };
 
