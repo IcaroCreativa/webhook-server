@@ -25,7 +25,7 @@ const server = http.createServer(app);
 const io = socketIO(server);
 
 // Middleware CORS
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 // Middleware pour parser les requêtes JSON et URL-encoded
 app.use(express.json());
