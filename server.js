@@ -1,7 +1,19 @@
 const express = require("express");
+const cors = require("cors");
+
+const allowedOrigin = "https://webhook-client-streamlit-production-54db.up.railway.app/";
+
+const corsOptions = {
+  origin: allowedOrigin,
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+
+
 
 // Create an Express app and listen for incoming requests on port 3000
 const app = express();
+app.use(cors(corsOptions));
 const router = express.Router();
 const port = process.env.PORT || 3000;
 
@@ -36,5 +48,5 @@ app.use(router);
 
 // Start the server and listen for incoming connections
 app.listen(port, () => {
-  console.log(`Server running at https://localhost:${port}/`);
+  console.log(`Server running at http://localhost:${port}/`);
 });
