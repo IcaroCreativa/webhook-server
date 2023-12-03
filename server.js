@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 
 // Configuration CORS
 const corsOptions = {
-  origin: allowedOrigin,
+  origin: "https://socket-client-production.up.railway.app/",
   optionsSuccessStatus: 200,
 };
 
