@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 
 // Configuration CORS
 const corsOptions = {
-  origin: "https://socket-client-production.up.railway.app/",
+  origin: "https://socket-client-production.up.railway.app",
   optionsSuccessStatus: 200,
 };
 
@@ -22,10 +22,12 @@ const app = express();
 const server = http.createServer(app);
 
 // Configuration Socket.IO
-const io = socketIO(server);
+const io = socketIO(server, {
+  cors: corsOptions,
+});
 
 // Middleware CORS
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 // Middleware pour parser les requêtes JSON et URL-encoded
 app.use(express.json());
