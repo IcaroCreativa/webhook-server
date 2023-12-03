@@ -23,7 +23,7 @@ router.get("/", (req, res) => {
 // Handle POST requests to specific URLs i.e. webhook endpoints
 router.post("/webhook-1", (req, res) => {
   console.log(req.body);
-  res.send("Webhook 1 successfully received.");
+  res.status(200).send({succes: "Webhook 1 successfully received.", body:req.body});
 });
 
 router.post("/webhook-2", (req, res) => {
