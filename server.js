@@ -78,8 +78,11 @@ io.on("connection", (socket) => {
 
       // Émettre un message aux autres membres de la salle actuelle
       io.to(currentRoom).emit(
-        "message",
-        `${currentUser} has left the room ${currentRoom}`
+        "message", {
+          message: `${currentUser.displayName} left the room ${currentRoom}`,
+          user: currentUser,
+        }
+        
       );
       // Mettre à jour l'information sur la salle courante
       currentRoom = null;
@@ -101,11 +104,11 @@ io.on("connection", (socket) => {
     // Mettre à jour l'information sur la salle courante
     currentRoom = data.roomNumber;
     currentUser = data.user;
-
+    console.log(currentUser);
     console.log(`${data.user} joined room: ${data.roomNumber}`);
     io.to(currentRoom).emit("message", {
-      message: `${currentUser} joined the room`,
-      user: "",
+      message: `${currentUser.firstname + " " + currentUser.name} joined the room ${currentRoom}`,
+      user: currentUser,
     });
   });
 
