@@ -42,10 +42,16 @@ io.on("connection", (socket) => {
   socket.emit("me", socket.id);
   console.log("A user connected" + socket.id);
 
-
+  socket.on("callClosed", (data) => {
+    console.log("Callclosed event received");
+    console.log("User who closed the call: ", data.me);
+    console.log("User that needs to close his call: ", data.caller);
+    socket.emit("callEnded", data);
+});
 
   socket.on("disconnect", () => {
     socket.broadcast.emit("callEnded");
+    
   });
 
   socket.on("callUser", (data) => {
